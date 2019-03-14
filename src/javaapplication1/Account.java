@@ -17,12 +17,12 @@ public class Account {
     private String industry;
     private String billingCity;
     private String billingState;
-    private int phone;
+    private String phone;
     private String accountOwner;
     private int numOfEmployee;
     private List<Contact> contactLst;
     
-    public Account(String a_accName, String a_indus, String a_billCity, String a_billState, int a_phone, String a_owner) {
+    public Account(String a_accName, String a_indus, String a_billCity, String a_billState, String a_phone, String a_owner) {
         accountName = a_accName;
         industry = a_indus;
         billingCity = a_billCity;
@@ -63,11 +63,11 @@ public class Account {
         this.billingState = billingState;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -91,9 +91,16 @@ public class Account {
         return contactLst;
     }
     
-    public void newContact (String a_name, String a_title, int a_phone, String a_email){
+    public void newContact (String a_name, String a_title, String a_phone, String a_email){
         Contact newContact = new Contact(a_name, a_title, a_phone, a_email);
         contactLst.add(newContact);
+    }
+    
+    public void listAllContacts(){
+        int num = 0;
+        for (Contact i : contactLst){
+            System.out.println(num+") " + i.getName() + ", " + i.getEmail() + ", " + i.getPhone() + ", " + i.getTitle());
+        }
     }
     
 }

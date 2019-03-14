@@ -12,10 +12,10 @@ package javaapplication1;
 public class Contact {
     private String name;
     private String title;
-    private int phone;
+    private String phone;
     private String email;
 
-    public Contact(String name, String title, int phone, String email) {
+    public Contact(String name, String title, String phone, String email) {
         this.name = name;
         this.title = title;
         this.phone = phone;
@@ -38,11 +38,11 @@ public class Contact {
         this.title = title;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
