@@ -5,6 +5,7 @@
  */
 package javaapplication1;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -24,7 +25,14 @@ public class Transaction
     private int TransactionID;
     Calendar DatePurchased;
     
-    public Transaction(Contact CContact, Products P, int TID, int Q)
+    private ArrayList<Transaction> TransactionList;
+
+    private Transaction(int id) 
+    {
+        TransactionID = id;
+    }
+    
+    public void CreateTransaction(Contact CContact, Products P, int TID, int Q)
     {
         Calendar today = new GregorianCalendar();
         int thisYear = today.get(Calendar.YEAR),
@@ -39,6 +47,45 @@ public class Transaction
         Quality = Q;
         
         DatePurchased = today;
+    }
+    
+    public void addTrans(Transaction T)
+    {
+        TransactionList.add(T);
+    }
+    
+    public Transaction GetLatestTransaction()
+    {
+        Transaction LastTrans;
+        if (! TransactionList.isEmpty())
+            LastTrans = TransactionList.get(TransactionList.size() - 1);
+        else
+        {
+            LastTrans = new Transaction(0);
+            System.out.println("None transaction found");
+        }
+        
+        return LastTrans;
+        
+    }
+    
+    public Transaction GetTransactionByID(int TID)
+    {
+        Transaction None;
+        None = new Transaction(0);
+        
+        for (int i = 0; i < TransactionList.size() ; i++) 
+        {
+            Transaction T;
+            T = TransactionList.get(i);
+            if (T.TransactionID == TID)
+            {
+                return T;
+            }
+        }
+        
+        return None;
+        
     }
     
     
