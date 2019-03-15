@@ -21,7 +21,11 @@ public class Account {
     private String accountOwner;
     private int numOfEmployee;
     private List<Contact> contactLst;
+    ////////////////////////// Vinh ////////////////////////
+    private List<Products> ProductsList;
     
+    ///////////////////////////////////////////////////
+     
     public Account(String a_accName, String a_indus, String a_billCity, String a_billState, String a_phone, String a_owner) {
         accountName = a_accName;
         industry = a_indus;
@@ -30,6 +34,9 @@ public class Account {
         phone = a_phone;
         accountOwner = a_owner;
         contactLst = new ArrayList<>();
+        //Vinh
+        ProductsList = new ArrayList<>();
+        //
     }
     public String getAccountName() {
         return accountName;
@@ -99,8 +106,34 @@ public class Account {
     public void listAllContacts(){
         int num = 0;
         for (Contact i : contactLst){
-            System.out.println(num+") " + i.getName() + ", " + i.getEmail() + ", " + i.getPhone() + ", " + i.getTitle());
+            System.out.println(num+") Name: " + i.getName() + ", Email: " + i.getEmail() + ", Phone: " + i.getPhone() + ", Title: " + i.getTitle());
+            num++;
         }
     }
+    ////////////////////////// Vinh ////////////////////////
+    
+    public void addProduct (String PName, String PID, Double Price)
+    {
+        Products p = new Products(PName, PID, Price);
+        ProductsList.add(p);
+    }
+    
+     public List<Products> getProductsList() 
+    {
+        return ProductsList;
+    }
+     public void listAllProducts()
+    {
+        int p = 0;
+        for (Products i : ProductsList)
+        {
+            System.out.println(p+") PName: " + i.getpname() + ", PID: " + i.getpid() + ", PPrice: " + i.getpprice());
+            p++;
+        }
+    }
+     
+     
+     
+    ///////////////////////////////////////////////////
     
 }
