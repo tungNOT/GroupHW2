@@ -23,7 +23,7 @@ public class Account {
     private List<Contact> contactLst;
     ////////////////////////// Vinh ////////////////////////
     private List<Products> ProductsList;
-    
+    private ArrayList<Transaction> TransactionList;
     ///////////////////////////////////////////////////
      
     public Account(String a_accName, String a_indus, String a_billCity, String a_billState, String a_phone, String a_owner) {
@@ -34,9 +34,10 @@ public class Account {
         phone = a_phone;
         accountOwner = a_owner;
         contactLst = new ArrayList<>();
-        //Vinh
+        ///////////////////////Vinh////////////////////////
         ProductsList = new ArrayList<>();
-        //
+        TransactionList = new ArrayList<>();
+        ////////////////////////////////////////////////
     }
     public String getAccountName() {
         return accountName;
@@ -110,7 +111,7 @@ public class Account {
             num++;
         }
     }
-    ////////////////////////// Vinh ////////////////////////
+    ////////////////////////// Vinh Product////////////////////////
     
     public void addProduct (String PName, String PID, Double Price)
     {
@@ -122,6 +123,13 @@ public class Account {
     {
         return ProductsList;
     }
+     
+      public Products getProduct(int i) 
+    {
+        return ProductsList.get(i);
+    }
+     
+     
      public void listAllProducts()
     {
         int p = 0;
@@ -131,7 +139,68 @@ public class Account {
             p++;
         }
     }
+     //////////////////////Vinh Transaction ////////////////////////////////
+     // Borrow get contact from tung
+     public Contact getContact(int i) 
+     {
+        return contactLst.get(i);
+     }
      
+      public Transaction getTransaction(int i) 
+     {
+        return TransactionList.get(i);
+     }
+     
+     public void addTrans(Transaction T)
+    {
+        TransactionList.add(T);
+    }
+    
+    public Transaction GetLatestTransaction()
+    {
+        Transaction LastTrans;
+        if (! TransactionList.isEmpty())
+            LastTrans = TransactionList.get(TransactionList.size() - 1);
+        else
+        {
+            LastTrans = new Transaction("Null");
+            System.out.println("None transaction found");
+        }
+        
+        return LastTrans;
+        
+    }
+    
+    public Transaction GetTransactionByID(String TID)
+    {
+        Transaction None;
+        None = new Transaction("Null");
+        
+        for (int i = 0; i < TransactionList.size() ; i++) 
+        {
+            Transaction T;
+            T = TransactionList.get(i);
+            if (T.TransactionID == TID)
+            {
+                return T;
+            }
+        }
+        return None;
+        
+    }
+    
+     public void listAllTransactions()
+    {
+        int i = 0;
+        
+            System.out.println("List transaction: ");
+            for (Transaction t:TransactionList)
+            {
+                System.out.println(i+") CName: " + t.getCName() + ", PName: " + t.getPName() + ", PID: " + t.getPID()+ ", Quality: " + t.getQuality()+ ", TID: " + t.getTID() );
+                i++;
+            }
+        
+    }
      
      
     ///////////////////////////////////////////////////
