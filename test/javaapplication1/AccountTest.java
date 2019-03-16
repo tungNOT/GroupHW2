@@ -18,10 +18,20 @@ import static org.junit.Assert.*;
  * @author Tung
  */
 public class AccountTest {
+    Account Tung;
+    Account Nguyen;
+    
+    Contact cont1;
+    Contact cont2;
     
     public AccountTest() {
-        Account acc1 = new Account("aaa", "aaa", "aaa", "aaa", "aaa", "aaa");
-        Contact cont1 = new Contact("a","a","a","a");
+        Tung = new Account("Tung", "CSU", "hayward", "ca", "012345678", "TungNguyen");
+        Nguyen = new Account("Nguyen", "CSU", "hayward", "ca", "876543210", "NguyenTung");
+        
+        
+        Tung.newContact("ABC", "Mr", "012345679", "ABC@gmail.com");
+        Nguyen.newContact("ABC", "Mr", "012345679", "ABC@gmail.com");
+        
     }
     
 
@@ -37,9 +47,19 @@ public class AccountTest {
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void AccountTest() {
-         acc1.newContact("a","a","a","a");
-         List<Contact> contList1 = acc1.getContactLst();
-         assertEquals(contList1.get(0),cont1);
+     public void AccountTest() 
+     {
+         String ContactName = Nguyen.getContact(0).getName();
+         String ContactNameT = Tung.getContact(0).getName();
+         assertEquals(ContactName,ContactNameT);
+         System.out.println(ContactName + " = " + ContactNameT);
+         
+         String ContactE = Nguyen.getContact(0).getEmail();
+         String ContactET = Tung.getContact(0).getEmail();
+         assertEquals(ContactE,ContactET);
+         System.out.println(ContactE + " = " + ContactET);
+         
+         
+         
      }
 }
