@@ -19,20 +19,45 @@ public class Transaction
     private String CustomerName;
     private String ProductName;
     
-    private int ProductID;
+    private String ProductID;
     private int Quality;
     
-    private int TransactionID;
+    public String TransactionID;
     Calendar DatePurchased;
     
-    private ArrayList<Transaction> TransactionList;
+    
 
-    private Transaction(int id) 
+    public Transaction(String id) 
     {
         TransactionID = id;
     }
     
-    public void CreateTransaction(Contact CContact, Products P, int TID, int Q)
+    public String getCName() 
+    {
+        return CustomerName;
+    }
+     public String getPName() 
+    {
+        return ProductName;
+    }
+      public String getPID() 
+    {
+        return ProductID;
+    }
+      public String getTID() 
+    {
+        return TransactionID;
+    }
+      public int getQuality() 
+    {
+        return Quality;
+    }
+      public Calendar getDate() 
+    {
+        return DatePurchased;
+    }
+    
+    public void CreateTransaction(Contact CContact, Products P, String TID, int Q)
     {
         Calendar today = new GregorianCalendar();
         int thisYear = today.get(Calendar.YEAR),
@@ -49,44 +74,7 @@ public class Transaction
         DatePurchased = today;
     }
     
-    public void addTrans(Transaction T)
-    {
-        TransactionList.add(T);
-    }
     
-    public Transaction GetLatestTransaction()
-    {
-        Transaction LastTrans;
-        if (! TransactionList.isEmpty())
-            LastTrans = TransactionList.get(TransactionList.size() - 1);
-        else
-        {
-            LastTrans = new Transaction(0);
-            System.out.println("None transaction found");
-        }
-        
-        return LastTrans;
-        
-    }
-    
-    public Transaction GetTransactionByID(int TID)
-    {
-        Transaction None;
-        None = new Transaction(0);
-        
-        for (int i = 0; i < TransactionList.size() ; i++) 
-        {
-            Transaction T;
-            T = TransactionList.get(i);
-            if (T.TransactionID == TID)
-            {
-                return T;
-            }
-        }
-        
-        return None;
-        
-    }
     
     
     
