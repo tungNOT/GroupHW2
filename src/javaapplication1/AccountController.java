@@ -23,6 +23,19 @@ public class AccountController {
        menuOptions.add(new SelectAccountMenu());
        menuOptions.add(new ListAllAccount());
        
+       /////////////////////Vinh Hard Code to make an Account //////////////
+       Account Vinh;
+       Vinh = new Account("vinhtrang1003", "School", "Hayward", "CA", "5106009094", "Vinh Trang");
+       Vinh.newContact("A", "Mr", "5106009095", "A@yahoo.com");
+       Vinh.newContact("B", "Ms", "5106009096", "B@yahoo.com");
+       Vinh.newContact("C", "Ms", "5106009097", "C@yahoo.com");
+       
+       Vinh.addProduct("Computer","0310",599.99);
+       Vinh.addProduct("TV","0311",1599.99);
+       Vinh.addProduct("DVD","0312",5.99);
+       
+       accounts.add(Vinh);
+       
     }
     
     public void execute(){

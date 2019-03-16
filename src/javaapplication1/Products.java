@@ -12,11 +12,11 @@ package javaapplication1;
 public class Products 
 {
     private String productName;
-    private int productID;
+    private String productID;
     private double productPrice;
     
     
-    public Products (String pname, int pid, double pprice)
+    public Products (String pname, String pid, double pprice)
     {
         productName = pname;
         productID = pid;
@@ -28,7 +28,7 @@ public class Products
         return productName;
     }
     
-    public int getpid()
+    public String getpid()
     {
         return productID;
     }
@@ -43,7 +43,7 @@ public class Products
         productPrice = p;
     }
     
-     public void setID( int id)
+     public void setID( String id)
     {
         productID = id;
     }

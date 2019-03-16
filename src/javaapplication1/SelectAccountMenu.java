@@ -85,7 +85,7 @@ public class SelectAccountMenu implements AccountMenuInterface{
         else if (option2 == 3) {
             currentSelectedAcc.listAllProducts();
         }
-        
+        /////////////////// Vinh add and list transaction ///////////////////
         else if (option2 == 4) 
         {
             System.out.println("Choose a customer from contact list: ");
@@ -118,6 +118,7 @@ public class SelectAccountMenu implements AccountMenuInterface{
             currentSelectedAcc.listAllTransactions();
         
         }
+        /////////////////// Vinh add and list transaction ///////////////////
         
         
         else {
